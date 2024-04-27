@@ -6,7 +6,6 @@ import java.util.Scanner;
 
 //2. Найти самое длинное слово:
 
-//  Исключить непредвиденную ситуацию, использую блоки try-catch.
 public class LongestWord {
     public static void main(String[] args) {
         try {
@@ -14,8 +13,6 @@ public class LongestWord {
             try (Scanner scanner = new Scanner(file)) {
                 String longestWord = "";
 
-                // пока работает scanner и не достигнут конец коллекции в блоке if проверяю
-                // длину встречающихся слов, и присваиваю longestWord самое длинное
                 while (scanner.hasNext()) {
                     String word = scanner.next();
                     if (word.length() > longestWord.length()) {
@@ -24,7 +21,6 @@ public class LongestWord {
                 }
                 scanner.close();
 
-                // вывод на печать
                 System.out.println("Самое длинное слово: " + longestWord);
             }
         } catch (FileNotFoundException e) {
