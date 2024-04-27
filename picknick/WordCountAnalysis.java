@@ -8,33 +8,35 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
-// Вычисление частоты слов
+// 3. Вычислить частоту слов:
 
 public class WordCountAnalysis {
+
     public static void main(String[] args) {
         try {
-            Scanner scanner = new Scanner(new File("input.txt"));
-            List<String> wordsList = new ArrayList<>();
-            Map<String, Integer> wordCount = new HashMap<>();
+            File file = new File("input.txt");
+            try (Scanner scanner = new Scanner(file)) {
+                List<String> wordsList = new ArrayList<>();
+                Map<String, Integer> wordCount = new HashMap<>();
 
-            // пока работает scanner и не достигнут конец коллекции,
-            // Добавляю слово в map wordCount. И при помощи использования put добавляю
-            // ключ/значение
-            // , а getOrDefault позволяет увеличить количество вхождений слова.
+                // // wordCount.put (): помещает в коллекцию новый объект с ключом и значением.
+                // // Если в коллекции уже есть объект с подобным ключом, то он перезаписывается
 
-            while (scanner.hasNext()) {
-                String word = scanner.next();
-                wordsList.add(word);
-                wordCount.put(word, wordCount.getOrDefault(word, 0) + 1);
-            }
-            scanner.close();
+                while (scanner.hasNext()) {
+                    String word = scanner.next();
+                    wordsList.add(word);
+                    wordCount.put(word, wordCount.getOrDefault(word, 0) + 1);
+                }
+                scanner.close();
+                // Метод entrySet() возвращает список всех пар в нашей HashMap
 
-            for (Map.Entry<String, Integer> entry : wordCount.entrySet()) {
-                System.out.println("Слово: " + entry.getKey() + " встречается - " + entry.getValue() + " раз(а);");
+                for (Map.Entry<String, Integer> entry : wordCount.entrySet()) {
+                    System.out.println("Слово: " + entry.getKey() + " встречается - " + entry.getValue() + " раз(а);");
+                }
             }
 
         } catch (FileNotFoundException e) {
-            System.out.println("Файл не найден.");
+            System.err.println("Файл не найден.");
         }
     }
 

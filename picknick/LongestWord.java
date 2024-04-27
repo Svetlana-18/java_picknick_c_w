@@ -4,7 +4,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-// 2. Нахождение самого длинного слова
+//2. Найти самое длинное слово:
+
 //  Исключить непредвиденную ситуацию, использую блоки try-catch.
 public class LongestWord {
     public static void main(String[] args) {
